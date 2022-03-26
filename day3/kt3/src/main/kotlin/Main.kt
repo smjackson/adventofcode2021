@@ -8,18 +8,27 @@ fun main(args: Array<String>) {
     println("--- Day 3 ---")
 
     val input = readFile(args[0])
+    val numBits = input[0].trim().length
 
-    partOne(input)
+    val intData = inputToInt(input, numBits)
+    partOne(intData, numBits)
 }
 
-fun partOne(input: List<String>)
+fun inputToInt(input: List<String>, numBits: Int): List<Int>
 {
-    val numBits = input[0].trim().length
-    val totals = IntArray(numBits)
     val bins = input.map {
-        val hex = it.trim().toInt(2)
-        for (i in 0..(numBits-1)) {
-            if((hex and (1 shl i)) != 0) {
+        it.trim().toInt(2)
+    }
+
+    return bins
+}
+
+fun partOne(input: List<Int>, numBits: Int)
+{
+    val totals = IntArray(numBits)
+    input.forEach() { hex ->
+        for (i in 0..(numBits - 1)) {
+            if ((hex and (1 shl i)) != 0) {
                 totals[i] = totals[i] + 1
             }
         }
@@ -35,7 +44,7 @@ fun partOne(input: List<String>)
         if(totals[i] > (input.size / 2)) {
             gamma = gamma or ((1 shl i).toUInt())
         }
-
+        // Build max value; in a silly way
         max = max or ((1 shl i).toUInt())
     }
 
