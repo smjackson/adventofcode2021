@@ -20,6 +20,8 @@ vector<int>* readFile(const char* file)
         pData->push_back(stoi(str));
     }
 
+    delete pData;
+
     return pData;
 
 }
