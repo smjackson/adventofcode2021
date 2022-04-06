@@ -20,8 +20,6 @@ vector<int>* readFile(const char* file)
         pData->push_back(stoi(str));
     }
 
-    delete pData;
-
     return pData;
 
 }
@@ -87,5 +85,6 @@ int main(int argc, char* argv[])
     cout << partOne(*data) << " increases" << endl;
     cout << partTwo(*data, 3) << " sliding window increases" << endl;
 
+    delete data;
     return 0;
 }
